@@ -22,7 +22,7 @@ body {
 }
 
 .caption {
-    height: 130px;
+    height: 145px;
     overflow: hidden;
 }
 
@@ -51,4 +51,9 @@ body {
 
 footer {
     margin: 50px 0;
+}
+
+hr {
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
