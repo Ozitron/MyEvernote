@@ -11,19 +11,19 @@ namespace MyEvernote.Entities
     [Table("EvernoteUsers")]
     public class EvernoteUser : MyEntityBase
     {
-        [StringLength(25)]
+        [StringLength(100)]
         public string Name { get; set; }
 
-        [StringLength(25)]
+        [StringLength(100)]
         public string Surname { get; set; }
 
-        [Required, StringLength(25)]
+        [Required, StringLength(100)]
         public string Username { get; set; }
 
-        [Required, StringLength(25)]
+        [Required, StringLength(100)]
         public string Email { get; set; }
 
-        [Required, StringLength(25)]
+        [Required, StringLength(100)]
         public string Password { get; set; }
 
         [Required]

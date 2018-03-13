@@ -11,14 +11,19 @@ namespace MyEvernote.Entities
     [Table("Categories")]
     public class Category : MyEntityBase
     {
-        [Required, StringLength(50)]
+        [Required, StringLength(150)]
         public string Title { get; set; }
 
-        [StringLength(150)]
+        [StringLength(250)]
         public string Description { get; set; }
 
 
         public virtual List<Note> Notes { get; set; } //ilişkisel olduğu için virtual tanımlandı
 
+        //constructor
+        public Category()
+        {
+            Notes = new List<Note>();
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace MyEvernote.BusinessLayer
         public Test()
         {
             DataAccessLayer.DatabaseContext db = new DataAccessLayer.DatabaseContext();
-            db.Database.CreateIfNotExists(); // Creates db if it's not exists
+            db.Categories.ToList(); // runs fake data
         }
         
 

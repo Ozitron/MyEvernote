@@ -11,7 +11,7 @@ namespace MyEvernote.Entities
     [Table("Comments")]
     public class Comment : MyEntityBase
     {
-        [Required, StringLength(300)]
+        [Required, StringLength(500)]
         public string Text { get; set; }
         //public bool IsApproval { get; set; }
 
