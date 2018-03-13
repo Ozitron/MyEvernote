@@ -70,6 +70,8 @@ namespace MyEvernote.DataAccessLayer
 
             context.SaveChanges();
 
+            // User list for creating data
+            List<EvernoteUser> userlist = context.EvernoteUsers.ToList();
 
             // adding fake categories
             for (int i = 0; i < 10; i++)
@@ -87,13 +89,15 @@ namespace MyEvernote.DataAccessLayer
 
                 for (int k = 0; k < FakeData.NumberData.GetNumber(7, 15); k++)
                 {
+                    
+
                     Note note = new Note()
                     {
                         Title = FakeData.TextData.GetAlphabetical(FakeData.NumberData.GetNumber(10, 35)),
                         Text = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 3)),
                         IsDraft = false,
                         LikeCount = FakeData.NumberData.GetNumber(1, 10),
-                        Owner = (k % 3 == 0) ? admin : standartUser,
+                        Owner = userlist[FakeData.NumberData.GetNumber(0, userlist.Count - 1)],
                         CreatedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now),
                         ModifiedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now),
                         ModifiedUserName = (k % 3 == 0) ? admin.Username : standartUser.Username
@@ -118,8 +122,6 @@ namespace MyEvernote.DataAccessLayer
                     }
 
                     //Adding fake likes
-                    List<EvernoteUser> userlist = context.EvernoteUsers.ToList();
-
                     for (int m = 0; m < 4; m++)
                     {
                         Liked liked = new Liked()
