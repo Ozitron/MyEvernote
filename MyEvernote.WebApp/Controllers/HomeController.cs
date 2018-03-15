@@ -12,6 +12,9 @@ namespace MyEvernote.WebApp.Controllers
         public ActionResult Index()
         {
             BusinessLayer.Test test = new BusinessLayer.Test();
+            //test.InsertTest();
+            //test.UpdateTest();
+            //test.DeleteTest();
 
             return View();
         }

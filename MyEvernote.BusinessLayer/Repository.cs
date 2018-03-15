@@ -49,7 +49,7 @@ namespace MyEvernote.BusinessLayer
             return Save();
         }
 
-        public int Save()
+        private int Save()
         {
             return db.SaveChanges();
         }
