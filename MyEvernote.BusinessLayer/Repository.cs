@@ -11,12 +11,15 @@ using System.Threading.Tasks;
 namespace MyEvernote.BusinessLayer
 {
     // Generic because every entity class will use this pattern
-    public class Repository<T> : RepositoryBase where T : class //must be class
+    public class Repository<T> where T : class //must be class
     {
+        private DatabaseContext db = new DatabaseContext();
         private DbSet<T> _objectSet;
 
         public Repository()
         {
+            db = RepositoryBase.CreateContext();
+
             _objectSet = db.Set<T>(); //Define just once, use it in every method.
         }
 
