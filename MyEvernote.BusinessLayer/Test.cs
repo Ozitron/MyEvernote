@@ -11,6 +11,8 @@ namespace MyEvernote.BusinessLayer
     {
         Repository<EvernoteUser> repo_user = new Repository<EvernoteUser>();
         Repository<Category> repo_category = new Repository<Category>();
+        Repository<Comment> repo_comment = new Repository<Comment>();
+        Repository<Note> repo_note = new Repository<Note>();
 
         // creates fake data, use it just once
         //public Test()
@@ -23,8 +25,8 @@ namespace MyEvernote.BusinessLayer
         public Test()
         {
             List<Category> categories = repo_category.List();
+            //List<Category> categories_filtered = repo_category.List(x => x.Id > 5);
         }
-
 
         //insert test
         public void InsertTest()
@@ -64,6 +66,24 @@ namespace MyEvernote.BusinessLayer
             {
                 repo_user.Delete(user);
             }
+        }
+
+        public void CommentTest()
+        {
+            EvernoteUser user = repo_user.Find(x => x.Id == 1);
+            Note note = repo_note.Find(x => x.Id == 3);
+            
+            Comment comment = new Comment()
+            {
+                Text = "Test comment.",
+                CreatedOn = DateTime.Now,
+                ModifiedOn = DateTime.Now,
+                ModifiedUserName = "testyman",
+                Note = note,
+                Owner = user
+            };
+
+            repo_comment.Insert(comment);
         }
     }
 }

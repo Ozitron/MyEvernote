@@ -18,6 +18,8 @@ namespace MyEvernote.BusinessLayer
 
         public Repository()
         {
+            db = RepositoryBase.CreateContext();
+
             _objectSet = db.Set<T>(); //Define just once, use it in every method.
         }
 
