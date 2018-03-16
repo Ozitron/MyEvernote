@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using MyEvernote.Entities;
 
-namespace MyEvernote.DataAccessLayer
+namespace MyEvernote.DataAccessLayer.EntityFramework
 {
     // works on db create
     public class MyInitializer : CreateDatabaseIfNotExists<DatabaseContext>
