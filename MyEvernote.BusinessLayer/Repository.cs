@@ -11,16 +11,13 @@ using System.Threading.Tasks;
 namespace MyEvernote.BusinessLayer
 {
     // Generic because every entity class will use this pattern
-    public class Repository<T> where T : class //must be class
+    public class Repository<T> : RepositoryBase where T : class //must be class
     {
-        private DatabaseContext db = new DatabaseContext();
         private DbSet<T> _objectSet;
 
         public Repository()
         {
-            db = RepositoryBase.CreateContext();
-
-            _objectSet = db.Set<T>(); //Define just once, use it in every method.
+            _objectSet = context.Set<T>(); //Define just once, use it in every method.
         }
 
         public List<T> List()
@@ -51,9 +48,9 @@ namespace MyEvernote.BusinessLayer
             return Save();
         }
 
-        private int Save()
+        public int Save()
         {
-            return db.SaveChanges();
+            return context.SaveChanges();
         }
 
         public T Find(Expression<Func<T,bool>> where)
