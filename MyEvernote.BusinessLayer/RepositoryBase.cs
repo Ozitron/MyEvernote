@@ -8,31 +8,30 @@ using System.Threading.Tasks;
 namespace MyEvernote.BusinessLayer
 {
     //using singleton pattern
-    class RepositoryBase
+    public class RepositoryBase
     {
-        private static DatabaseContext _db;
+        protected static DatabaseContext db;
         private static object _lockSync = new object();
 
         // ctor is protected so cant do new
         protected RepositoryBase()
         {
-
+            CreateContext();
         }
 
-        public static DatabaseContext CreateContext()
+        private static void CreateContext()
         {
-            if (_db == null)
+            if (db == null)
             {
                 lock (_lockSync) // to prevent thread errors
                 {
-                    if (_db == null)
+                    if (db == null)
                     {
-                        _db = new DatabaseContext();
+                        db = new DatabaseContext();
                     }
                 }
             }
-
-            return _db;
         }
+
     }
 }

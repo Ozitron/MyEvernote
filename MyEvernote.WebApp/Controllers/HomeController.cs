@@ -15,6 +15,7 @@ namespace MyEvernote.WebApp.Controllers
             //test.InsertTest();
             //test.UpdateTest();
             //test.DeleteTest();
+            //test.CommentTest();
 
             return View();
         }
