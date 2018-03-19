@@ -1,19 +1,17 @@
-﻿
+﻿@using MyEvernote.Entities
+@model List<Note>
+
 @{
     ViewBag.Title = "Index";
 }
 
-    <!-- Page Content -->
+<!-- Page Content -->
 <div class="container">
     <div class="row">
         <div class="col-md-3">
             @*kategoriler*@
-            <p class="lead">Kategoriler</p>
-            <div class="list-group">
-                <a href="#" class="list-group-item">Category 1</a>
-                <a href="#" class="list-group-item">Category 2</a>
-                <a href="#" class="list-group-item">Category 3</a>
-            </div>
+            @Html.Partial("_PartialCategories")
+
         </div>
         <div class="col-md-9">
             <div class="row carousel-holder">
@@ -45,203 +43,63 @@
                     </div>
                 </div>
             </div>
+
             <div class="row">
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://placehold.it/320x150" alt="">
-                        <div class="caption">
-                            <h4 class="pull-right"></h4>
-                            <h4>
-                                <a href="#">First Product</a>
-                            </h4>
-                            <h6>
-                                <span class="glyphicon glyphicon-time"></span> 01.01.2018
-                                <span class="glyphicon glyphicon-user"></span> okomurcu
-                            </h6>
-                            <p>lipsum text generator doesn't work. Some randome bullshit.</p>
-                        </div>
-                        <div>
-                            <hr />
-                        </div>
-                        <div class="ratings">
-                            <p class="pull-right">
-                                <button class="btn btn-default btn-sm">
-                                    <span class="glyphicon glyphicon-comment"></span> Yorumlar
-                                </button>
-                            </p>
+                <!-- Notes -->
+                @foreach (Note note in Model)
+                {
 
-                            <p>
-                                <button class="btn btn-default btn-sm" type="button">
-                                    <span class="glyphicon glyphicon-star-empty"></span> 15
-                                </button>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="http://placehold.it/320x150" alt="@note.Title">
+                            <div class="caption">
+                                <h4 class="pull-right"></h4>
+                                <h4>
+                                    <a href="#">@note.Title</a>
+                                </h4>
+                                <p>
+                                    @if (string.IsNullOrEmpty(note.Text) == false && note.Text.Length > 85)
+                                    {
+                                    <p>@(note.Text.Substring(0, 85) + "...")</p>
+                                    <p>
+                                        <a href="#" class="btn btn-default">Continue <span class="glyphicon glyphicon-chevron-right"></span> </a>
+                                    </p>
+                                }
+                                else
+                                {
+                                    <p>@note.Text</p>
+                                }
 
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://placehold.it/320x150" alt="">
-                        <div class="caption">
-                            <h4 class="pull-right"></h4>
-                            <h4>
-                                <a href="#">First Product</a>
-                            </h4>
-                            <h6>
-                                <span class="glyphicon glyphicon-time"></span> 01.01.2018
-                                <span class="glyphicon glyphicon-user"></span> okomurcu
-                            </h6>
-                            <p>lipsum text generator doesn't work. Some randome bullshit.</p>
-                        </div>
-                        <div>
-                            <hr />
-                        </div>
-                        <div class="ratings">
-                            <p class="pull-right">
-                                <button class="btn btn-default btn-sm">
-                                    <span class="glyphicon glyphicon-comment"></span> Yorumlar
-                                </button>
-                            </p>
 
-                            <p>
-                                <button class="btn btn-default btn-sm" type="button">
-                                    <span class="glyphicon glyphicon-star-empty"></span> 15
-                                </button>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://placehold.it/320x150" alt="">
-                        <div class="caption">
-                            <h4 class="pull-right"></h4>
-                            <h4>
-                                <a href="#">First Product</a>
-                            </h4>
-                            <h6>
-                                <span class="glyphicon glyphicon-time"></span> 01.01.2018
-                                <span class="glyphicon glyphicon-user"></span> okomurcu
-                            </h6>
-                            <p>lipsum text generator doesn't work. Some randome bullshit.</p>
-                        </div>
-                        <div>
-                            <hr />
-                        </div>
-                        <div class="ratings">
-                            <p class="pull-right">
-                                <button class="btn btn-default btn-sm">
-                                    <span class="glyphicon glyphicon-comment"></span> Yorumlar
-                                </button>
-                            </p>
+                                    <h6>
+                                        <span class="glyphicon glyphicon-user"></span> @note.Owner.Username <br />
+                                        <span class="glyphicon glyphicon-time"></span> @note.ModifiedOn.ToString("dd.MM.yy - HH:mm")
 
-                            <p>
-                                <button class="btn btn-default btn-sm" type="button">
-                                    <span class="glyphicon glyphicon-star-empty"></span> 15
-                                </button>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://placehold.it/320x150" alt="">
-                        <div class="caption">
-                            <h4 class="pull-right"></h4>
-                            <h4>
-                                <a href="#">First Product</a>
-                            </h4>
-                            <h6>
-                                <span class="glyphicon glyphicon-time"></span> 01.01.2018
-                                <span class="glyphicon glyphicon-user"></span> okomurcu
-                            </h6>
-                            <p>lipsum text generator doesn't work. Some randome bullshit.</p>
-                        </div>
-                        <div>
-                            <hr />
-                        </div>
-                        <div class="ratings">
-                            <p class="pull-right">
-                                <button class="btn btn-default btn-sm">
-                                    <span class="glyphicon glyphicon-comment"></span> Yorumlar
-                                </button>
-                            </p>
+                                    </h6>
+                                </div>
 
-                            <p>
-                                <button class="btn btn-default btn-sm" type="button">
-                                    <span class="glyphicon glyphicon-star-empty"></span> 15
-                                </button>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://placehold.it/320x150" alt="">
-                        <div class="caption">
-                            <h4 class="pull-right"></h4>
-                            <h4>
-                                <a href="#">First Product</a>
-                            </h4>
-                            <h6>
-                                <span class="glyphicon glyphicon-time"></span> 01.01.2018
-                                <span class="glyphicon glyphicon-user"></span> okomurcu
-                            </h6>
-                            <p>lipsum text generator doesn't work. Some randome bullshit.</p>
-                        </div>
-                        <div>
-                            <hr />
-                        </div>
-                        <div class="ratings">
-                            <p class="pull-right">
-                                <button class="btn btn-default btn-sm">
-                                    <span class="glyphicon glyphicon-comment"></span> Yorumlar
-                                </button>
-                            </p>
+                                <div> <hr /> </div>
 
-                            <p>
-                                <button class="btn btn-default btn-sm" type="button">
-                                    <span class="glyphicon glyphicon-star-empty"></span> 15
-                                </button>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://placehold.it/320x150" alt="">
-                        <div class="caption">
-                            <h4 class="pull-right"></h4>
-                            <h4>
-                                <a href="#">First Product</a>
-                            </h4>
-                            <h6>
-                                <span class="glyphicon glyphicon-time"></span> 01.01.2018
-                                <span class="glyphicon glyphicon-user"></span> okomurcu
-                            </h6>
-                            <p>lipsum text generator doesn't work. Some randome bullshit.</p>
-                        </div>
-                        <div>
-                            <hr />
-                        </div>
-                        <div class="ratings">
-                            <p class="pull-right">
-                                <button class="btn btn-default btn-sm">
-                                    <span class="glyphicon glyphicon-comment"></span> Yorumlar
-                                </button>
-                            </p>
+                                <div class="ratings">
+                                    <p class="pull-right">
+                                        <button class="btn btn-default btn-sm">
+                                            <span class="glyphicon glyphicon-comment"></span> Yorumlar
+                                        </button>
+                                    </p>
 
-                            <p>
-                                <button class="btn btn-default btn-sm" type="button">
-                                    <span class="glyphicon glyphicon-star-empty"></span> 15
-                                </button>
-                            </p>
+                                    <p>
+                                        <button class="btn btn-default btn-sm" type="button">
+                                            <span class="glyphicon glyphicon-star-empty"></span> @note.LikeCount
+                                        </button>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+
+
+                    }
             </div>
-        
-            
+
         </div>
     </div>
 </div>
