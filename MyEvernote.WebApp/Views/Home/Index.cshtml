@@ -57,6 +57,10 @@
                                 <h4>
                                     <a href="#">@note.Title</a>
                                 </h4>
+                                <h6>
+                                    <span class="glyphicon glyphicon-user"></span> @note.Owner.Username
+                                    <span class="glyphicon glyphicon-time"></span> @note.ModifiedOn.ToString("dd.MM.yy - HH:mm")
+                                </h6>
                                 <p>
                                     @if (string.IsNullOrEmpty(note.Text) == false && note.Text.Length > 85)
                                     {
@@ -70,12 +74,6 @@
                                     <p>@note.Text</p>
                                 }
 
-
-                                    <h6>
-                                        <span class="glyphicon glyphicon-user"></span> @note.Owner.Username <br />
-                                        <span class="glyphicon glyphicon-time"></span> @note.ModifiedOn.ToString("dd.MM.yy - HH:mm")
-
-                                    </h6>
                                 </div>
 
                                 <div> <hr /> </div>
