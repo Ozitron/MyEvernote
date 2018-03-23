@@ -27,7 +27,8 @@ namespace MyEvernote.WebApp.Controllers
 
             NoteManager nm = new NoteManager();
 
-            return View(nm.GetAllNote());
+            return View(nm.GetAllNote().OrderByDescending(x => x.ModifiedOn).ToList());
+            //return View(nm.GetAllNotesQueryable().OrderByDescending(x => x.ModifiedOn).ToList());
         }
 
         public ActionResult ByCategory(int? id)
@@ -46,7 +47,19 @@ namespace MyEvernote.WebApp.Controllers
                 // return RedirectToAction("Index", "Home");
             }
 
-            return View("Index", cat.Notes);
+            return View("Index", cat.Notes.OrderByDescending(x => x.ModifiedOn).ToList());
+        }
+
+        public ActionResult MostLiked()
+        {
+            NoteManager nm = new NoteManager();
+            return View("Index", nm.GetAllNote().OrderByDescending(x => x.LikeCount).ToList());
+
+        }
+
+        public ActionResult About()
+        {
+            return View();
         }
     }
 }

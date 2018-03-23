@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "About";
+}
+
+@using MyEvernote.Entities
+@model List<Note>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            @*kategoriler*@
+            @Html.Partial("_PartialCategories")
+
+        </div>
+        <div class="col-md-9">
+
+
+            <div class="row">
+                <h2>
+                    Test, about page.
+                </h2>
+                <p>
+                    Fusce finibus purus vestibulum nulla tempus, sit amet imperdiet turpis dignissim.
+                    In dui mi, posuere a sapien et, tincidunt ultrices elit. Duis aliquam, est ac fringilla dapibus,
+                    leo nibh iaculis dui, at porttitor est est facilisis libero. Cras condimentum posuere orci,
+                    sed tincidunt magna scelerisque vel. Fusce eu justo vitae nisi imperdiet feugiat quis vitae quam.
+                    Etiam nec blandit turpis, nec consectetur mi. Suspendisse nec tincidunt quam, eu vehicula est.
+                </p>
+
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus pulvinar odio, nec interdum urna commodo 
+                    vitae. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; 
+                    Aenean accumsan rutrum iaculis. Etiam eget diam nisl. Vivamus ut pulvinar eros. 
+                    Ut faucibus mauris at ante tempus tempus. Donec urna orci, facilisis eu efficitur molestie, 
+                    maximus fermentum nulla. Duis pharetra vehicula orci in sagittis.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+

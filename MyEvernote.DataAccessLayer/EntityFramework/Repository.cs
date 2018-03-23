@@ -26,6 +26,12 @@ namespace MyEvernote.DataAccessLayer.EntityFramework
             return _objectSet.ToList();
         }
 
+        //iqueryable
+        public IQueryable<T> ListQueryable()
+        {
+            return _objectSet.AsQueryable<T>();
+        }
+
         //with criteria
         public List<T> List(Expression<Func<T,bool>> where)
         {
