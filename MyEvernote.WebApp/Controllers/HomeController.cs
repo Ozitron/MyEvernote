@@ -120,6 +120,11 @@ namespace MyEvernote.WebApp.Controllers
             return View(model);
         }
 
+        public ActionResult RegisterOk()
+        {
+            return View();
+        }
+
         public ActionResult Logout()
         {
             return View();
