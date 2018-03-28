@@ -7,6 +7,21 @@
 
 <link href="~/Content/Login-register.css" rel="stylesheet" />
 
+<style type="text/css">
+    .validation-summary-errors
+    {
+        border:2px dotted   #a94442;
+        background-color: #d76663;
+        border-radius: 8px;
+    }
+    .validation-summary-errors ul{
+        list-style-type: none;
+        padding: 10px;
+        color: #fff;
+    }
+
+</style>
+
 @using (Html.BeginForm())
 {
     <!------ Include the above in your HEAD tag ---------->
@@ -17,6 +32,8 @@
                     <h1 class="text-center ">Register Form </h1>
                 </div>
                 <div class="main-content">
+
+                    @Html.ValidationSummary(false)  @*required fields*@
 
                     <div class="input-group ">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>

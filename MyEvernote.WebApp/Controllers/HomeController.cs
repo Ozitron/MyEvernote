@@ -85,13 +85,39 @@ namespace MyEvernote.WebApp.Controllers
         [HttpPost]
         public ActionResult Register(RegisterViewModel model)
         {
+            if (ModelState.IsValid)
+            {
+                if (model.Username == "aaa")
+                {
+                    ModelState.AddModelError("", "Username is already in use.");
+
+                }
+
+                if (model.Email == "aa@aa.com")
+                {
+                    ModelState.AddModelError("", "Email address is already in use.");
+
+                }
+
+                foreach (var item in ModelState)
+                {
+                    //Has any error?
+                    if (item.Value.Errors.Count > 0)
+                    {
+                        return View(model);
+                    }
+                }
+
+                return RedirectToAction("RegisterOk");
+            }
+
             //username check
             //email check
             //register
             //activation mail
             //
 
-            return View();
+            return View(model);
         }
 
         public ActionResult Logout()
